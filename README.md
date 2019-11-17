@@ -1,6 +1,6 @@
 # Create Utility ruby program to return array of locations from required input parameters: latitude, longitude, number of location, type, response output and language.
 
-## Thing to be consider
+## Thing to be considered
 - authorize customers able to connect
 - connected customer can output array
 - output array as expected type

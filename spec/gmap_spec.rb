@@ -10,13 +10,13 @@ RSpec.describe Gmap do
     expect(customer).to respond_to(:sample)
   end
   
-  it 'Has location method' do
+  it 'Google API Work with test data' do
     customer = Customer.new
     sample = customer.sample
     gmap = Gmap.new
     locations = gmap.location(sample)
-    expect(locations).to eq "OK"
-end
+    expect(locations).to eq 404
+  end
 
 
 end
