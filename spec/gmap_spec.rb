@@ -16,7 +16,8 @@ RSpec.describe Gmap do
     customer = Customer.new "xml", "A", "textquery", "atm", "English",  "200", "30.4284750,-97.7550500", "AIzaSyAi5P4uDP__jO-eHMcFnQLaHU3cFi7eooE"
     gmap = Gmap.new
     locations = gmap.location(customer)
-    expect(locations).to eq 200 
+    code = locations.code
+    expect(code).to eq 200 
   end
 end
 

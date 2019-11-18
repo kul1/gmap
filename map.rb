@@ -7,10 +7,10 @@ require 'pry'
 input_array = ARGV
 unless input_array.length == 6
   puts "Please enter paramter as following format:"
-  puts "ruby gmap \"inputformat\" \"apikey\" \"type\" \"language\" \"output-format\" \"Name or Content\""
+  puts "ruby map.rb \"inputformat\" \"apikey\" \"type\" \"language\" \"output-format\" \"Name or Content\""
   puts "For exmaple:"
-  puts "ruby gmap.rb \"xml\" \"AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg\" \"all\" \"French\" \"json\" \"Bank\""
-  # exit(0)
+  puts "ruby map.rb \"xml\" \"AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg\" \"all\" \"French\" \"json\" \"Bank\""
+  exit(0)
 end
 
 # Assign variable to run program 
@@ -29,6 +29,5 @@ end
 @customer = Customer.new(@output,@name, @text_phone, @type, @language, @number, @location, @apikey)
 gmap = Gmap.new
 response = gmap.location(@customer)
-
 puts response
 
