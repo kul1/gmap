@@ -1,23 +1,53 @@
 require './customer'
 require 'rubygems'
 require 'httparty'
+require 'pry'
 
 class Gmap
 
   include HTTParty
-
   def location(cust)
     # call goolge with customer parameter
     # return result
-
+    base_url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/"
     if cust == "Sample"
-      base_url = "https://maps.googleapis.com/maps/api/place/findplacefromtextjson?input=mongolian%20grill&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle: 2000@47.6918452,-122.2226413&key=AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg"
-      #response = HTTParty.get(url)
-      return response
+      url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=mongolian%20grill&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle: 2000@47.6918452,-122.2226413&key=AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg"
+      response = HTTParty.get(url)
+      return response.code
     else
-
-      return "Nil"
+      #Extract customer info
+      url = base_url+cust.output+"?input="+cust.name+"&inputtype="+cust.text_phone+"&fields="+cust.type+"&fields=language="+cust.language+"&locationbias=circle:"+cust.location+"&key="+cust.apikey
+      response = HTTParty.get(url)
+      return response
     end
   end
 end
+
+input_array = ARGV
+unless input_array.length == 6
+  puts "Please enter paramter as following format:"
+  puts "ruby gmap \"inputformat\" \"apikey\" \"type\" \"language\" \"output-format\" \"Name or Content\""
+  puts "For exmaple:"
+  puts "ruby gmap.rb \"xml\" \"AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg\" \"all\" \"French\" \"json\" \"Bank\""
+  # exit(0)
+end
+
+# Assign variable to run program 
+# Input from default data and command line ARGV
+
+@xml  = input_array[0]
+@apikey = input_array[1]
+@type = input_array[2]
+@language = input_array[3]
+@output = input_array[4]
+@name = input_array[5]
+
+@location = "0.4284750,-97.7550500" # Test Location
+@text_phone = "textquery" # set as default unless specify as phone number
+@number = "200"  # Can not find document
+@customer = Customer.new(@output,@name, @text_phone, @type, @language, @number, @location, @apikey)
+gmap = Gmap.new
+response = gmap.location(@customer)
+
+puts response
 

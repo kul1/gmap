@@ -15,6 +15,5 @@ class Customer
     return "Sample"
     # return "OK"
   end
-
 end
 
