@@ -19,38 +19,42 @@
 
 ## Usage
 - ruby version 2.5.5
-
+- ryby map.rb [arguments]
 - Enter command follow this sample or type ruby map.rb for help
-~~
+
+~~~
 $ ruby map.rb "xml" "AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg" "all" "French" "json" "Bank"
 ~~~
 
 ## Test Code
-Since all programming used TDD to create each code.
+TDD to create each step, some code may not related to the final version
 Using: Guard, Rspec
-- gmap_spec.rb
+
 To run all test
-~~
+
+~~~
 $ rspec
 ~~~
+
 ##
 Things ToDo 
-- Change ARGV to key=>value
-- Or read customer from file
+- Change input ARGV to key=>value when call map.rb
+- Or read data from file
 - 0r Create Prompt for user input
 
-## Bug or Problem might happen
+## Bug or Problem might happen or unable to display result
 
 ### API Key was expired or over daily limit or my APIKey not work 
 So this program work from logic only and use reponse code 200 and text response to test 
 
 How to solve the problem:
 - Once we have proper API_Key, we can easily fix by moving around the parameters as need
-### Some parameter not able to find document in this limited time frame
-- number of location as @number 
+
+### Some parameters not able to find document in this limited time frame
+- number of locations as @number 
 - name or content of the location @name
 
 ### map.rb
 - map.rb created after finished TDD 
 - map.rb was not in the rspec, it was refactoring to deliver the project
--
+
