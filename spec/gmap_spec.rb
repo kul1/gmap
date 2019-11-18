@@ -12,8 +12,7 @@ RSpec.describe Gmap do
 
   # 'Test with parameters'
   it 'Google API Work with provided parameters' do
-    # customer = Customer.new "xml", "A", "textquery", "atm", "English",  "200", "30.4284750,-97.7550500", "AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg"
-    customer = Customer.new "xml", "A", "textquery", "atm", "English",  "200", "30.4284750,-97.7550500", "AIzaSyAi5P4uDP__jO-eHMcFnQLaHU3cFi7eooE"
+    customer = Customer.new "xml", "A", "textquery", "atm", "English",  "200", "30.4284750,-97.7550500", "AIzaSyCI33WirMl2FJlzwi5vey0C8T63qnFh4Jg"
     gmap = Gmap.new
     locations = gmap.location(customer)
     code = locations.code
